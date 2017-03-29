@@ -29,8 +29,8 @@
                 </div>
                 <div class="col" style="text-align: left">
                     <div class="md-form">
-                        <label for="graduationDegree">Titulo de egreso</label>
-                        <input id="graduationDegree" type="text" class="form-control">
+                        <label class="lbl_gd" >Titulo de egreso</label>
+                        <input class=" form-control input_gd" type="text" >
                     </div>
                 </div>
             </div>
@@ -47,7 +47,7 @@
             <div class="dependenciesDiv">
 
             </div>
-            <input hidden class="dependencyId" value="0" name="dependencyId" >
+            <input hidden class="dependencyId" value="0" >
 
 
         </div>

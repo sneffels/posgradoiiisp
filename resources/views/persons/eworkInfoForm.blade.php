@@ -12,12 +12,12 @@
         </div>
         <div class="card-text">
             <div class="md-form">
-                <label for="institution">Institucion</label>
-                <input id="institution" class="form-control" type="text">
+                <label class="lblInst">Institucion</label>
+                <input class="form-control inputInst" type="text">
             </div>
             <div class="md-form">
-                <label for="position">Cargo</label>
-                <input id="position" class="form-control" type="text">
+                <label class="lblPos">Cargo</label>
+                <input class="form-control inputPos" type="text">
             </div>
         </div>
 

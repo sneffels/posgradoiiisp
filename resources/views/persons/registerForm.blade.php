@@ -6,21 +6,21 @@
             <div class="md-form indigo-text">
                 <i class="fa fa-user prefix"></i>
                 <label for="name">Nombre</label>
-                <input class="form-control personalInfo" type="text" id="name">
+                <input class="form-control personalInfo" type="text" id="name" name="name">
             </div>
         </div>
         <div class="col-md-4">
             <div class="md-form indigo-text">
                 <i class="fa fa-user prefix"></i>
                 <label for="lastName">Apellido paterno</label>
-                <input class="form-control personalInfo" type="text" id="lastName" >
+                <input class="form-control personalInfo" type="text" id="lastName" name="lastName">
             </div>
         </div>
         <div class="col-md-4">
             <div class="md-form indigo-text">
                 <i class="fa fa-user prefix"></i>
                 <label for="middleName">Apellido materno</label>
-                <input class="form-control personalInfo" type="text" id="middleName" >
+                <input class="form-control personalInfo" type="text" id="middleName" name="middleName">
             </div>
 
         </div>
@@ -29,33 +29,33 @@
         <div class="md-form purple-text">
             <i class="fa fa-calendar prefix"></i>
             <label for="birthDate">Fecha de nacimiento</label>
-            <input class="form-control"  type="text" id="birthDate">
+            <input class="form-control"  type="text" id="birthDate" name="birthDate">
         </div>
 
 
     <div class="md-form purple-text">
         <i class="fa fa-id-card prefix" aria-hidden="true"></i>
         <label for="personalId">C.I.</label>
-        <input class="form-control"  type="text" id="personalId">
+        <input class="form-control"  type="text" id="personalId" name="personalId">
     </div>
     <div class="md-form green-text">
         <i class="fa fa-phone prefix" aria-hidden="true"></i>
         <label for="phone">Telefono</label>
-        <input class="form-control" type="text" id="phone">
+        <input class="form-control" type="text" id="phone" name="phone">
     </div>
     <div class="md-form green-text">
         <i class="fa fa-mobile prefix" aria-hidden="true"></i>
         <label for="cellphone">Celular</label>
-        <input class="form-control" type="text" id="cellphone">
+        <input class="form-control" type="text" id="cellphone" name="cellphone">
     </div>
     <div class="md-form green-text">
         <i class="fa fa-at prefix" aria-hidden="true"></i>
         <label for="email">Correo Electronico</label>
-        <input class="form-control" type="text" id="email">
+        <input class="form-control" type="text" id="email" name="email">
     </div>
     <div class="input-group md-form">
         <i class="fa fa-users fa-2x" aria-hidden="true"></i>
-        <select class="form-control" type="text" id="gender" style="margin-left: 15px">
+        <select class="form-control" type="text" id="gender" style="margin-left: 15px" name="gender">
             <option disabled selected>Genero</option>
             <option value="F">Femenino</option>
             <option value="M">Masculino</option>
@@ -63,7 +63,7 @@
     </div>
     <div class="input-group md-form">
         <i class="fa fa-map fa-2x" aria-hidden="true"></i>
-        <select class="form-control" type="text" id="originType" style="margin-left: 15px">
+        <select class="form-control" type="text" id="originType" style="margin-left: 15px" name="originType">
             <option disabled selected>Tipo procedencia</option>
             <option value="N">Nacional</option>
             <option value="E">Extranjero</option>

@@ -33,6 +33,7 @@
 @section('page-script')
     <script>
         var nwe=0;
+        var nai=0;
         $('#birthDate').bootstrapMaterialDatePicker({ weekStart : 0, time: false });
         //-----------Selects----------------
         $('#countries').on('change',function (e) {
@@ -137,11 +138,20 @@
             addEWItem();
         });
         $('.btnDeleteEWItem').on('click',function () {
+            nai--;
             $(this).closest('.card-block').remove()
-        })
+        });
         function addEWItem () {
+            nai++;
             $('#masterEWItem').clone(true,true).removeAttr('hidden').removeAttr('id').
-            addClass('expWorkItem').appendTo($('#workExperienceList'));
+            addClass('expWorkItem').attr('id','wi_'+nai).appendTo($('#workExperienceList'));
+        console.log('en funcion');
+        $('#wi_'+nai).find('.lblInst').attr('for','institution_'+nai);
+        $('#wi_'+nai).find('.inputInst').attr('id','institution_'+nai);
+        $('#wi_'+nai).find('.inputInst').attr('name','institution[]');
+        $('#wi_'+nai).find('.lblPos').attr('for','position_'+nai);
+        $('#wi_'+nai).find('.inputPos').attr('id','position_'+nai);
+        $('#wi_'+nai).find('.inputPos').attr('name','position[]');
         }
         //----------aInfo data----------------
         $('#addAIItem').on('click',function () {
@@ -159,6 +169,10 @@
             $('#academicInfoItem_'+nwe).find('.dependenciesDiv').attr('id','dependenciesDiv_'+nwe);
             $('#academicInfoItem_'+nwe).find('.dependencyId').attr('id','dependencyId_'+nwe);
             $('#academicInfoItem_'+nwe).find('.dependencies').attr('id','dependencies_'+nwe);
+             $('#academicInfoItem_'+nwe).find('.lbl_gd').attr('for','graduationDegree_'+nwe);
+             $('#academicInfoItem_'+nwe).find('.input_gd').attr('id','graduationDegree_'+nwe);
+             $('#academicInfoItem_'+nwe).find('.input_gd').attr('name','graduationDegree[]');
+             $('#academicInfoItem_'+nwe).find('.dependencyId').attr('name','dependencyId[]');
 
         }
 
@@ -230,7 +244,7 @@
                     })
                 }
                 else{
-                    console.log('ultimo');
+
                     console.log(ew);
                     if($('#dependenciesDiv_'+ew).children().length>0)
                     {
@@ -273,6 +287,7 @@
 
 
         });
+
 
     </script>
 

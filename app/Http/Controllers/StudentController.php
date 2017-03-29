@@ -4,10 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Country;
 use App\DepartmentCD;
+use App\Foreign;
 use App\Institution;
+use App\National;
+use Faker\Provider\lv_LV\Person;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class StudentController extends Controller
 {
@@ -43,6 +48,60 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
+        $person=new \App\Person();
+        $person->name=$request->name;
+        $person->lastName=$request->lastName;
+        $person->middleName=$request->middleName;
+        $person->birthDate=$request->birthDate;
+        $person->personalId=$request->personalId;
+        $person->phone=$request->phone;
+        $person->cellphone=$request->cellphone;
+        $person->email=$request->email;
+        $person->gender=$request->gender;
+        $person->originType=$request->originType;
+        $person->save();
+        if($request->originType=='N')
+        {
+            $national=new National();
+            $national->personId=$person->id;
+            $national->cdDepartmentId=$request->departmentId;
+            $national->provinceId=$request->provinceId;
+            $national->save();
+        }
+        else if($request->originType=='E')
+        {
+            $foreign=new Foreign();
+            $foreign->personId=$person->id;
+            $foreign->countryId=$request->countryId;
+            $foreign->cityId=$request->cityId;
+            $foreign->save();
+        }
+
+        $positions=$request->position;
+        $institutions=$request->institution;
+
+        foreach ($positions as $key=>$val)
+        {
+            $arrData[]=[
+                'institution'=>$institutions[$key],
+                'position'=>$positions[$key],
+                'personId'=>$person->id
+            ];
+        }
+        DB::table('workExperiences')->insert($arrData);
+
+        $graduationDegrees=$request->graduationDegree;
+        $dependenciesIds=$request->dependencyId;
+
+        foreach ($graduationDegrees as $key=>$val)
+        {
+            $arrDataGD[]=[
+                'graduationDegree'=>$graduationDegrees[$key],
+                'personId'=>$person->id,
+                'institutionId'=>$dependenciesIds[$key]
+            ];
+        }
+        DB::table('academicInfos')->insert($arrDataGD);
         
     }
 
