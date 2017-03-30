@@ -10,29 +10,12 @@
             </div>
         </div>
         <div class="card-text">
-            <div class="row">
-                <div class="col-3">
-                    <div class="btn-group btn-group-xs">
-                        <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="sr-only">Toggle Dropdown</span>
-                        </button>
 
-                        <button type="button" class="btn btn-danger" id="gd-val">action</button>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item gd-di" href="javascript:void(0)">Tecnico</a>
-                            <a class="dropdown-item gd-di" href="javascript:void(0)">Lic.</a>
-                            <a class="dropdown-item gd-di" href="javascript:void(0)">M.Sc.</a>
-                            <a class="dropdown-item gd-di" href="javascript:void(0)">Ph.D</a>
-                            <a class="dropdown-item gd-di" href="javascript:void(0)">---</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col" style="text-align: left">
                     <div class="md-form">
                         <label class="lbl_gd" >Titulo de egreso</label>
                         <input class=" form-control input_gd" type="text" >
                     </div>
-                </div>
+
             </div>
 
 

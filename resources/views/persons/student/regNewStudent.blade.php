@@ -13,8 +13,7 @@
     </div>
     <form class="form-horizontal" method="post"
     action="{{url('regNewStudent/')}}"
-          id="regNewStudentForm"
-    >
+          id="regNewStudentForm">
         <button type="submit" class="btn btn-amber">Guardar</button>
         <input type="hidden" name="_token" value="{{csrf_token()}}">
         <div class="pag-personal">
@@ -145,7 +144,7 @@
             nai++;
             $('#masterEWItem').clone(true,true).removeAttr('hidden').removeAttr('id').
             addClass('expWorkItem').attr('id','wi_'+nai).appendTo($('#workExperienceList'));
-        console.log('en funcion');
+
         $('#wi_'+nai).find('.lblInst').attr('for','institution_'+nai);
         $('#wi_'+nai).find('.inputInst').attr('id','institution_'+nai);
         $('#wi_'+nai).find('.inputInst').attr('name','institution[]');
