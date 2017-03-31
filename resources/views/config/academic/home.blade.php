@@ -1,29 +1,6 @@
 @extends('app')
 @section('content')
         <div class="row">
-            <div class="col-md-3">
-                <div class="card text-center">
-                    <div class="card-header default-color-dark white-text">
-                        Tipos de instituciones
-                    </div>
-                    <div class="card-block">
-                        <table class="table">
-                            <tbody>
-                            @foreach($types as $type)
-                                <tr>
-                                    <td>
-                                        <p> {{$type->name}}</p>
-                                    </td>
-                                </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
-                            <a data-toggle="modal" data-target="#addModal" class="btn btn-default">
-                                Adicionar tipo
-                            </a>
-                    </div>
-                </div>
-            </div>
             <div class="col-md-9">
                 <ul class="nav nav-tabs">
                     <li class="nav-item">
@@ -43,12 +20,12 @@
                             <table class="table">
                                 <tbody>
 
-                                        @foreach($institutions as $institution)
-                                            <tr>
-                                                <td>{{$institution->name}}</td>
-                                                <td>{{$institution->dependencyState}}</td>
-                                            </tr>
-                                        @endforeach
+                                @foreach($institutions as $institution)
+                                    <tr>
+                                        <td>{{$institution->name}}</td>
+                                        <td>{{$institution->dependencyState}}</td>
+                                    </tr>
+                                @endforeach
 
                                 </tbody>
                             </table>
@@ -119,6 +96,30 @@
                     </div>
                 </div>
             </div>
+            <div class="col-md-3 animated slideInDown">
+                <div class="card text-center">
+                    <div class="card-header default-color-dark white-text">
+                        Tipos de instituciones
+                    </div>
+                    <div class="card-block">
+                        <table class="table">
+                            <tbody>
+                            @foreach($types as $type)
+                                <tr>
+                                    <td>
+                                        <p> {{$type->name}}</p>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                            <a data-toggle="modal" data-target="#addModal" class="btn btn-default">
+                                Adicionar tipo
+                            </a>
+                    </div>
+                </div>
+            </div>
+
     </div>
     <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="AddType">
         <div class="modal-dialog" role="document">

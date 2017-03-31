@@ -15,16 +15,12 @@
                         <label class="lbl_gd" >Titulo de egreso</label>
                         <input class=" form-control input_gd" type="text" >
                     </div>
-
-            </div>
-
-
             <div class="dependenciesDivMax">
                 <select class="form-control dependencies">
                     <option active >Elegir institucion</option>
                     @foreach($dependencies as $item)
                         <option value="{{$item->id}}">{{$item->name}}</option>
-                        @endforeach
+                    @endforeach
                 </select>
             </div>
             <div class="dependenciesDiv">
@@ -32,10 +28,15 @@
             </div>
             <input hidden class="dependencyId" value="0" >
 
+            </div>
+
+
+
+
 
         </div>
 
     </div>
 
-</div>
+
 

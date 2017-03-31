@@ -132,11 +132,12 @@
     </div>
 
     <li id="academics " data-toggle="collapse" data-target="#l_academics" class="collapsed nv-item">
-        <a href="#"><i class="fa fa-gift fa-lg"></i> Académico <span class="arrow"></span></a>
+        <a href="#"><i class="fa fa-gift fa-lg"></i>Planificacion academica<span class="arrow"></span></a>
     </li>
     <ul class="sub-menu collapse" id="l_academics">
         <li class="active"><a href="#">Administrar Programas</a></li>
         <li><a href="#">Administrar Módulos</a></li>
+        <li><a href="{{url('/params')}}">Parametrizacion</a></li>
     </ul>
     <li id="hhrr" data-toggle="collapse" data-target="#l_hhrr" class="collapsed nv-item">
         <a href="#"><i class="fa fa-gift fa-lg"></i> Recursos Humanos <span class="arrow"></span></a>

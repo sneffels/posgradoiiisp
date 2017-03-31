@@ -12,8 +12,7 @@
         </nav>
     </div>
     <form class="form-horizontal" method="post"
-    action="{{url('regNewStudent/')}}"
-          id="regNewStudentForm">
+    action="{{url('regNewStudent/')}}"  id="regNewStudentForm">
         <button type="submit" class="btn btn-amber">Guardar</button>
         <input type="hidden" name="_token" value="{{csrf_token()}}">
         <div class="pag-personal">

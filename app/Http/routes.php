@@ -52,3 +52,7 @@ Route::get('/api/independents/{idCountry}/{idCity}','ApiController@independentIn
 Route::get('/api/independents','ApiController@independents');
 Route::get('/api/dependencies/{id}','ApiController@dependencies');
 Route::get('/api/provinces/{id}','ApiController@provinces');
+
+Route::get('/params','ParamsAPController@index');
+Route::post('/paramsAcademicPlanning','AcademicOfferController@store');
+Route::post('/program','ProgramController@store');
