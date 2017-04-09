@@ -5,6 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="_token" content="{!! csrf_token() !!}"/>
+
     <title>Material Design Bootstrap</title>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -135,8 +137,9 @@
         <a href="#"><i class="fa fa-gift fa-lg"></i>Planificacion academica<span class="arrow"></span></a>
     </li>
     <ul class="sub-menu collapse" id="l_academics">
-        <li class="active"><a href="#">Administrar Programas</a></li>
-        <li><a href="#">Administrar Módulos</a></li>
+        <li class="active"><a href="{{url('programs')}}">Administrar Programas</a></li>
+        <li><a href="{{url('/modules')}}">Administrar Módulos</a></li>
+        <li><a href="{{url('/courses')}}">Administrar Paralelos</a></li>
         <li><a href="{{url('/params')}}">Parametrizacion</a></li>
     </ul>
     <li id="hhrr" data-toggle="collapse" data-target="#l_hhrr" class="collapsed nv-item">
@@ -155,7 +158,10 @@
                 Registro
             </a>
         </li>
-        <li>Admisión</li>
+        <li>
+            <a href="{{url('enrollment')}}">
+                Admisión
+            </a></li>
         <li>Administración de estudiantes</li>
         <li>Aprobación de módulos</li>
     </ul>
@@ -235,7 +241,12 @@
         }
     });
 
+</script>
 
+<script type="text/javascript">
+    $.ajaxSetup({
+        headers: { 'X-CSRF-Token' : $('meta[name=_token]').attr('content') }
+    });
 </script>
 @yield('page-script')
 </html>

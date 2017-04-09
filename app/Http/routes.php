@@ -15,9 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/test', function () {
-    return view('persons.student.home');
-});
+
 
 Route::get('/regional','RegionalController@index');
 Route::get('/instacademics','InstAcademicHomeController@index');
@@ -52,7 +50,39 @@ Route::get('/api/independents/{idCountry}/{idCity}','ApiController@independentIn
 Route::get('/api/independents','ApiController@independents');
 Route::get('/api/dependencies/{id}','ApiController@dependencies');
 Route::get('/api/provinces/{id}','ApiController@provinces');
+Route::get('/api/academicRRHH','ApiController@academicRRHH');
+Route::get('/api/academicRRHHById/{id}','ApiController@academicRRHHById');
+Route::get('/api/modules/{id}','ApiController@modules');
+Route::get('/api/version/{id}','ApiController@version');
+Route::get('/api/versionModules','ApiController@versionModules');
+Route::get('/api/versionModules/{id}','ApiController@versionModulesById');
+Route::get('/api/courses','ApiController@courses');
+Route::get('/api/person/{id}','ApiController@personByCI');
 
 Route::get('/params','ParamsAPController@index');
 Route::post('/paramsAcademicPlanning','AcademicOfferController@store');
 Route::post('/program','ProgramController@store');
+
+Route::get('/regNewRRHH','RRHHController@create');
+Route::post('/regNewRRHH','RRHHController@store');
+
+Route::get('/program','VersionController@create');
+Route::post('/program','VersionController@store');
+Route::get('/programs','VersionController@index');
+
+Route::get('/modules','ModuleController@create');
+
+Route::post('/module','ModuleMaster@store');
+
+Route::get('/requirements','RequirementController@index');
+Route::post('requirements','RequirementController@store');
+Route::get('requirementLast','RequirementController@show');
+
+Route::post('versionModule','ModuleController@store');
+
+Route::get('courses','CourseController@index');
+Route::post('course','CourseController@store');
+
+Route::get('enrollment','EnrollmentController@create');
+
+
