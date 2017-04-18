@@ -38,21 +38,25 @@ class AcademicOfferController extends Controller
      */
     public function store(Request $request)
     {
+
+        
         $rules=array(
             'name'=>'required|unique:academicOffers',
             'min_workload'=>'required',
-            'ac-grade'=>'required'
+            'ac_degree'=>'required'
 
         );
-        $validator=Validator::make($request->all(),$rules);
-        if($validator->fails)
+        $validator=\Illuminate\Support\Facades\Validator::make($request->all(),$rules);
+        if($validator->fails())
         {
-            return redirect('params')->with('errorOffer',$validator)->withInput();
+            return redirect('params')->withErrors($validator)->withInput();
         }
         else
         {
             $offer=new AcademicOffer();
             $offer->name=$request->name;
+            $offer->min_workload=$request->min_workload;
+            $offer->ac_degree=$request->ac_degree;
             $offer->save();
             return redirect('params');
         }

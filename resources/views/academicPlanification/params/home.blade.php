@@ -1,5 +1,7 @@
 @extends('app')
 @section('content')
+
+
     <div class="row">
         <div class="col-4 animated slideInDown">
             <div class="card text-center">
@@ -18,7 +20,7 @@
                         @endforeach
                         </tbody>
                     </table>
-                    <a data-toggle="modal" data-target="#addModal" class="btn btn-secondary">
+                    <a data-toggle="modal" data-target="#addModal" class="btn btn-secondary" id="addOfferButton">
                         Adicionar tipo de oferta
                     </a>
                 </div>
@@ -101,33 +103,38 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
+                <form method="post" id="add-form" class="form-horizontal"
+                      action="{{url('/paramsAcademicPlanning')}}"
+                >
                 <div class="modal-body">
-                    <form method="post" id="add-form" class="form-horizontal"
-                          action="{{url('/paramsAcademicPlanning')}}"
-                    >
+
+
 
                         <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <div class="md-form">
                             <label for="offerName">Oferta académica</label>
-                            <input class="form-control" name="name" type="text" id="offerName" required>
+                            <input class="form-control" name="name" type="text" id="offerName" >
+                            @if($errors->has('name'))<p>{{$errors->first('name')}}</p>@endif
                         </div>
                         <div class="md-form">
                             <label for="workload">Minimo horas academicas</label>
-                            <input class="form-control" name="workload" type="number" id="workload" required>
+                            <input class="form-control" name="min_workload" type="number" id="workload" >
+                            @if($errors->has('min_workload'))<p>{{$errors->first('min_workload')}}</p>@endif
                         </div>
 
                             <h5>¿Ofrece grado academico?</h5>
 
                         <div class="btn-group" data-toggle="buttons">
                             <label class="btn btn-blue-grey active">
-                                <input value="Y" type="radio" name="getDegree" id="option1" autocomplete="off" checked required>SI
+                                <input value="Y" type="radio" name="ac_degree" id="option1" autocomplete="off" checked >SI
                             </label>
                             <label class="btn btn-blue-grey">
-                                <input value="N" type="radio" name="getDegree" id="option2" autocomplete="off" required>NO
+                                <input value="N" type="radio" name="ac_degree" id="option2" autocomplete="off" >NO
                             </label>
+                            @if($errors->has('ac_degree'))<p>{{$errors->first('ac_degree')}}</p>@endif
                         </div>
 
-                    </form>
+
                 </div>
                 <div class="modal-footer">
                     <div class="pull-right row">
@@ -135,7 +142,15 @@
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                     </div>
                 </div>
+                </form>
             </div>
         </div>
     </div>
+@endsection
+@section('page-script')
+    @if($errors->any())
+        <script>
+            $('#addModal').modal('show');
+        </script>
+    @endif
 @endsection
