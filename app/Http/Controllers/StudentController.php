@@ -7,7 +7,8 @@ use App\DepartmentCD;
 use App\Foreign;
 use App\Institution;
 use App\National;
-use Faker\Provider\lv_LV\Person;
+
+use App\Person;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -23,7 +24,11 @@ class StudentController extends Controller
      */
     public function index()
     {
-        //
+        $resp=Person::whereNotIn('id',function($query)
+        {
+            $query->select('person_id')->from('rrhh');
+        })->get();
+        return view('students.index',['students'=>$resp]);
     }
 
     /**
@@ -102,6 +107,7 @@ class StudentController extends Controller
             ];
         }
         DB::table('academicInfos')->insert($arrDataGD);
+        return redirect('students');
         
     }
 

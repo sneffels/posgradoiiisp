@@ -10,8 +10,10 @@ use App\Http\Requests;
 use App\Institution;
 use App\Module;
 use App\Person;
+use App\Program;
 use App\Province;
 use App\Req;
+use App\ReqVersions;
 use App\RRHH;
 use App\Version;
 use App\versionModules;
@@ -85,7 +87,19 @@ class ApiController extends Controller
     }
     public function reqByProgram($id)
     {
-        $resp=Req::with('Req')->where('version_id','=',$id);
+        $resp=ReqVersions::with('req')->where('version_id','=',$id)->get();
+        return $resp;
     }
- 
+    
+    public function coursesByModule($id)
+    {
+        $resp=versionModules::with('courses')->find($id);
+        return $resp->courses;
+    }
+    
+    public function programByOffer($id)
+    {
+        $resp=Program::where('academic_offer_id','=',$id)->get();
+        return $resp;
+    }
 }

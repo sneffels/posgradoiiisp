@@ -14,4 +14,5 @@ class Program extends Model
     {
         return $this->belongsTo(AcademicOffer::class,'academic_offer_id');
     }
+    
 }

@@ -29,4 +29,8 @@ class Course extends Model
     {
         return $this->hasOne(RRHH::class,'id','professor_id');
     }
+    public function enrollments()
+    {
+        return $this->hasMany(moduleEnrollment::class,'course_id');
+    }
 }

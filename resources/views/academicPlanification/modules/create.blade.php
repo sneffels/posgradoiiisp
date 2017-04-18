@@ -77,7 +77,11 @@
                         <td>{{$module->module->name}}</td>
                         <td>{{$module->version->program->name.' v.'.$module->version->nroVersion}}</td>
                         <td>{{$module->state}}</td>
-                        <td>acciones</td>
+                        <td>
+                            <a class="blue-text" href="{{url('/module/'.$module->id)}}"><i class="fa fa-user"></i></a>
+                            <a class="teal-text"><i class="fa fa-pencil"></i></a>
+                            <a class="red-text"><i class="fa fa-times"></i></a>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
@@ -222,9 +226,13 @@
                 $.each(data, function (index, object) {
                     $('#modulesList').append('<tr>'+
                             '<td>'+object.module.name+'</td>'+
-                            '<td>'+object.version.program.name+'</td>'+
+                            '<td>'+object.version.program.name+' v.'+object.version.nroVersion+'</td>'+
                             '<td>'+object.state+'</td>'+
-                            '<td>acciones</td>'+
+                            '<td>'+
+                            '<a class="blue-text" href="/module/'+object.id+'"><i class="fa fa-user"></i></a>'+
+                            '<a class="teal-text"><i class="fa fa-pencil"></i></a>'+
+                            '<a class="red-text"><i class="fa fa-times"></i></a>'+
+                            '</td>'+
                             '</tr>');
                 });
 

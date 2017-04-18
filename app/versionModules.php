@@ -25,4 +25,13 @@ class versionModules extends Model
     {
         return $this->belongsTo(Module::class,'module_id');
     }
+    public function courses()
+    {
+        return $this->hasMany(Course::class,'version_module_id');
+    }
+
+    public function enrollments()
+    {
+        return $this->hasMany(moduleEnrollment::class,'module_id');
+    }
 }

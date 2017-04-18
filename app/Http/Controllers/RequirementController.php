@@ -18,7 +18,7 @@ class RequirementController extends Controller
     public function index()
     {
         $req=Req::all();
-        return $req;
+        return view('config.req.index',['req'=>$req]);
     }
 
     /**
@@ -46,7 +46,7 @@ class RequirementController extends Controller
            $req= new Req();
             $req->name=$n;
             $req->save();
-
+        return redirect('requirements');
       
     }
 

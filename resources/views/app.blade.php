@@ -137,7 +137,8 @@
         <a href="#"><i class="fa fa-gift fa-lg"></i>Planificacion academica<span class="arrow"></span></a>
     </li>
     <ul class="sub-menu collapse" id="l_academics">
-        <li class="active"><a href="{{url('programs')}}">Administrar Programas</a></li>
+        <li><a href="{{url('program/create')}}">Crear programa</a></li>
+        <li><a href="{{url('programs')}}">Administrar Programas</a></li>
         <li><a href="{{url('/modules')}}">Administrar Módulos</a></li>
         <li><a href="{{url('/courses')}}">Administrar Paralelos</a></li>
         <li><a href="{{url('/params')}}">Parametrizacion</a></li>
@@ -146,8 +147,9 @@
         <a href="#"><i class="fa fa-gift fa-lg"></i> Recursos Humanos <span class="arrow"></span></a>
     </li>
     <ul class="sub-menu collapse" id="l_hhrr">
-        <li class="active"><a href="#">Administrativos</a></li>
-        <li><a href="#">Docentes</a></li>
+        <li class="active"><a href="{{url('administrativeRRHH')}}">Administrativos</a></li>
+        <li><a href="{{url('academicRRHH')}}">Recurso Humano Academico</a></li>
+        <li><a href="{{url('regNewRRHH')}}">Registrar nuevo </a></li>
     </ul>
     <li data-toggle="collapse" data-target="#l_students" class="collapsed nv-item" id="students">
         <a href="#"><i class="fa fa-car fa-lg"></i> Estudiantes<span class="arrow"></span></a>
@@ -180,6 +182,11 @@
             </a>
 
         </li>
+        <li>
+            <a href="{{url('/requirements')}}">
+                Requisitos generales
+            </a>
+        </li>
         <li>Cuentas</li>
     </ul>
 </div>
@@ -199,7 +206,9 @@
 <!-- MDB core JavaScript -->
 <script type="text/javascript" src="{{asset('style/js/mdb.min.js')}}"></script>
 <!-- Time picker-->
+
 <script type="text/javascript" src="{{asset('style/js/moment.js')}}"></script>
+<script type="text/javascript" src="{{asset('style/js/moment-with-locales.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('style/js/bootstrap-material-datetimepicker.js')}}"></script>
 
 
@@ -207,6 +216,7 @@
 </body>
 
 <script>
+    moment.locale('es');
     var isOpen = 0;
 
     $('#buttonNavBar').on('click', function (ev) {

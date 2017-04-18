@@ -16,12 +16,12 @@ class CreateRrhhTable extends Migration
             $table->increments('id');
 
             $table->char('state');//activo, inactivo
-            $table->char('type');//administrativo, academico
-            $table->date('startDate');
-            $table->string('curriculumFilePath');
+            $table->char('type');//administrativo, academico, D->administrativo, A->academic
+            $table->date('startDate')->nullable();
+            $table->string('curriculumFilePath')->nullable();
             $table->integer('person_id')->unsigned();
             $table->foreign('person_id')->references('id')->on('persons');
-            $table->longText('description');//short description about his o her job at iiisp
+            $table->longText('description')->nullable();//short description about his o her job at iiisp
         });
     }
 

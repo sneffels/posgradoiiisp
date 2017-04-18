@@ -17,13 +17,13 @@ class CreateVersionsTable extends Migration
             $table->increments('id');
             $table->char('state');
             $table->integer('nroVersion');
-            $table->integer('nroCredits');
-            $table->date('startDate');
-            $table->date('finishDate');
-            $table->integer('price');
-            $table->integer('discountPrice');
-            $table->integer('enrollmentPrice');
-            $table->integer('coo_id')->unsigned();
+            
+            $table->date('startDate')->nullable();
+            $table->date('finishDate')->nullable();
+            $table->integer('price')->nullable();
+            $table->integer('discountPrice')->nullable();
+            $table->integer('enrollmentPrice')->nullable();
+            $table->integer('coo_id')->unsigned()->nullable();
             $table->foreign('coo_id')->references('id')->on('rrhh');
 
         });

@@ -6,6 +6,7 @@ use App\AcademicOffer;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Validation\Validator;
 
 class AcademicOfferController extends Controller
 {
@@ -37,10 +38,25 @@ class AcademicOfferController extends Controller
      */
     public function store(Request $request)
     {
-        $offer=new AcademicOffer();
-        $offer->name=$request->name;
-        $offer->save();
-        return redirect('params');
+        $rules=array(
+            'name'=>'required|unique:academicOffers',
+            'min_workload'=>'required',
+            'ac-grade'=>'required'
+
+        );
+        $validator=Validator::make($request->all(),$rules);
+        if($validator->fails)
+        {
+            return redirect('params')->with('errorOffer',$validator)->withInput();
+        }
+        else
+        {
+            $offer=new AcademicOffer();
+            $offer->name=$request->name;
+            $offer->save();
+            return redirect('params');
+        }
+        
     }
 
     /**

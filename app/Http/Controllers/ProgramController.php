@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Module;
 use App\Program;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\Input;
+use Validator;
 
 class ProgramController extends Controller
 {
@@ -37,11 +40,18 @@ class ProgramController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request,[
+
+            'name'=>'required',
+            'offer_id'=>'required'
+        ]);
+
         $program=new Program();
-        $program->name=$request->programName;
-        $program->academic_offer_id=$request->offerId;
+        $program->name=$request->name;
+        $program->academic_offer_id=$request->offer_id;
         $program->save();
-        return redirect('params');
+        return redirect('program/create');
+
     }
 
     /**
@@ -52,7 +62,9 @@ class ProgramController extends Controller
      */
     public function show($id)
     {
-        //
+        $resp=Program::find($id);
+        $modules=Module::where('program_id','=',$id)->get();
+        return view('academicPlanification.params.program-master-show',['program'=>$resp,'modules'=>$modules]);
     }
 
     /**
@@ -63,7 +75,7 @@ class ProgramController extends Controller
      */
     public function edit($id)
     {
-        //
+
     }
 
     /**

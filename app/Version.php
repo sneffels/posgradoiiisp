@@ -20,4 +20,15 @@ class Version extends Model
     {
         return $this->hasMany(versionModules::class,'program_id');
     }
+    public function enrollments()
+    {
+        return $this->hasMany(Enrollment::class,'version_id');
+    }
+    
+    public function coo()
+    {
+        return $this->hasOne(RRHH::class,'id','coo_id');
+    }
+    
+    
 }

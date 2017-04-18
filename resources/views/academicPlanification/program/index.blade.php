@@ -18,7 +18,7 @@
             @foreach($versions as $version)
 
                 <tr>
-                <td>{{$version->program->name}}</td>
+                <td>{{$version->program->name.' v.'.$version->nroVersion}}</td>
                 <td>
                     @if($version->state ='A')
                         {{"En progreso"}}
@@ -28,7 +28,7 @@
 
                 </td>
                 <td>
-                    <a class="blue-text"><i class="fa fa-user"></i></a>
+                    <a class="blue-text" href="{{url('/program/'.$version->id)}}"><i class="fa fa-user"></i></a>
                     <a class="teal-text"><i class="fa fa-pencil"></i></a>
                     <a class="red-text"><i class="fa fa-times"></i></a>
                 </td>

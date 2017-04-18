@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Course;
 use App\Version;
+use App\versionModules;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -61,7 +62,9 @@ class CourseController extends Controller
      */
     public function show($id)
     {
-        //
+        $resp=Course::with('version.coo.person','version.program','versionModule.module','professor','enrollments.student')->find($id);
+        //return $resp;
+        return view('academicPlanification.courses.show',['course'=>$resp]);
     }
 
     /**

@@ -15,5 +15,6 @@ class ModuleMaster extends Controller
         $module->name=$request->name;
         $module->program_id=$request->program_id;
         $module->save();
+        return redirect('program/edit/'.$request->program_id);
     }
 }

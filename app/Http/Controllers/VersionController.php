@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\AcademicOffer;
+use App\Enrollment;
 use App\Program;
 use App\Req;
 use App\Version;
@@ -31,14 +33,10 @@ class VersionController extends Controller
      */
     public function create()
     {
-        $programs=Program::all();
-        //$coo=RRHH::where('type','=','A')->get();
-        $req=Req::all();
-        return view('academicPlanification.program.create',[
-            'programs'=>$programs,
-
-            'req'=>$req
-        ]);
+        $programs=Program::with('offer')->get();
+        $offers=AcademicOffer::all();
+        $requirements=Req::all();
+        return view('academicPlanification.program.create',['programs'=>$programs,'offers'=>$offers,'requirements'=>$requirements]);
     }
 
     /**
@@ -74,6 +72,7 @@ class VersionController extends Controller
             ];
         }
         DB::table('ReqVersions')->insert($arrReq);
+        redirect('programs');
 
     }
 
@@ -85,7 +84,9 @@ class VersionController extends Controller
      */
     public function show($id)
     {
-        //
+        $resp=Version::with('program','coo','versionModules.module','enrollments.student')->find($id);
+
+        return view('academicPlanification.program.show',['version'=>$resp]);
     }
 
     /**

@@ -2,10 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Enrollment;
+use App\moduleEnrollment;
 use App\Version;
+use Faker\Provider\DateTime;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\DB;
+use Illuminate\View\Engines\EngineResolver;
 
 class EnrollmentController extends Controller
 {
@@ -38,7 +43,35 @@ class EnrollmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $enrollment=new Enrollment();
+        $enrollment->student_id=$request->cId; //unique
+        $enrollment->version_id=$request->program_id;
+        $enrollment->enrollmentDate=DateTime::date();
+        $enrollment->save();
+
+        $req=$request->reqEnrollment;
+        foreach ($req as $key=>$value)
+        {
+            $arrReq[]=[
+
+                'req_id'=>$req[$key],
+                'ver_enrollment_id'=>$enrollment->id,
+
+            ];
+        }
+        DB::table('reqEnrollment')->insert($arrReq);
+
+        $moduleEnr=new moduleEnrollment();
+        $moduleEnr->student_id=$request->cId;
+        $moduleEnr->module_id=$request->module_id;
+        $moduleEnr->grade=0;
+        $moduleEnr->obs=$request->obs;
+        $moduleEnr->enrollmentType=$request->type;
+        $moduleEnr->enrollment_id=$enrollment->id;
+        $moduleEnr->course_id=$request->course_id;
+        $moduleEnr->save();
+
+        return redirect('enrollment');
     }
 
     /**

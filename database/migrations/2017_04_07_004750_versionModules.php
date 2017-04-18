@@ -19,9 +19,9 @@ class VersionModules extends Migration
             $table->integer('module_id')->unsigned();
             $table->foreign('module_id')->references('id')->on('modules');
             $table->char('state');
-            $table->date('startDate');
-            $table->date('finishDate');
-            $table->integer('credits');
+            $table->date('startDate')->nullable();
+            $table->date('finishDate')->nullable();
+            $table->integer('credits')->nullable();
             
         });
     }

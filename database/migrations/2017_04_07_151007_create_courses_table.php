@@ -15,9 +15,10 @@ class CreateCoursesTable extends Migration
         Schema::create('courses',function(Blueprint $table){
            $table->increments('id');
             $table->integer('version_id')->unsigned();
+            $table->integer('version_module_id')->unsigned();
             $table->foreign('version_id')->references('id')->on('versions');
-            $table->integer('version_module_id')->references('id')->on('versionModules');
-            $table->integer('professor_id')->unsigned();
+            $table->foreign('version_module_id')->references('id')->on('versionModules');
+            $table->integer('professor_id')->unsigned()->nullable();
             $table->foreign('professor_id')->references('id')->on('rrhh');
             $table->string('course');
 

@@ -63,7 +63,9 @@ class ModuleController extends Controller
      */
     public function show($id)
     {
-        //
+        $resp=versionModules::with('version.coo.person','version.program','module','courses','courses.professor.person','enrollments.student')->find($id);
+
+        return view('academicPlanification.modules.show',['module'=>$resp]);
     }
 
     /**

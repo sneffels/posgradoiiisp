@@ -10,7 +10,7 @@
                 <div class="row">
                     <div class="col">
                         <select class="form-control" id="programId" name="program_id">
-                            <option value="prog" disabled>Programas</option>
+                            <option value="prog" disabled selected>Programas</option>
                             @foreach($programs as $version)
                                 <option value="{{$version->id}}">{{$version->program->name.' - v.'.$version->nroVersion}}</option>
                             @endforeach
@@ -111,6 +111,7 @@
 @endsection
 @section('page-script')
     <script>
+
         $.ajaxSetup({
             type: 'POST',
             headers: {"cache-control": "no-cache"}

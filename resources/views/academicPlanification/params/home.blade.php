@@ -51,7 +51,7 @@
                                     <td>{{$program->name}}</td>
                                     <td>{{$program->offer->name}}</td>
                                     <td>
-                                        <a class="teal-text" href="{{url('$/program/edit/'.$program->id)}}">
+                                        <a class="teal-text" href="{{url('/program/edit/'.$program->id)}}">
                                             <i class="fa fa-pencil"></i>
                                         </a>
                                     </td>
@@ -64,7 +64,7 @@
     <div id="createProgram" class="tab-pane fade in active">
         <div class="container">
             <form class="form-horizontal" style="padding-top: 15px"
-                  method="post" action="{{url('/program')}}">
+                  method="post" action="{{url('/programMaster')}}">
                             <input type="hidden" name="_token" value="{{csrf_token()}}">
                             <div class="md-form">
                                 <input class="form-control" type="text" name="programName" id="programName">
@@ -109,13 +109,31 @@
                         <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <div class="md-form">
                             <label for="offerName">Oferta académica</label>
-                            <input class="form-control" name="name" type="text" id="offerName">
+                            <input class="form-control" name="name" type="text" id="offerName" required>
                         </div>
-                        <div class="pull-right row">
-                            <button type="submit" class="btn btn-primary">Adicionar</button>
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <div class="md-form">
+                            <label for="workload">Minimo horas academicas</label>
+                            <input class="form-control" name="workload" type="number" id="workload" required>
                         </div>
+
+                            <h5>¿Ofrece grado academico?</h5>
+
+                        <div class="btn-group" data-toggle="buttons">
+                            <label class="btn btn-blue-grey active">
+                                <input value="Y" type="radio" name="getDegree" id="option1" autocomplete="off" checked required>SI
+                            </label>
+                            <label class="btn btn-blue-grey">
+                                <input value="N" type="radio" name="getDegree" id="option2" autocomplete="off" required>NO
+                            </label>
+                        </div>
+
                     </form>
+                </div>
+                <div class="modal-footer">
+                    <div class="pull-right row">
+                        <button type="submit" class="btn btn-primary">Adicionar</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    </div>
                 </div>
             </div>
         </div>

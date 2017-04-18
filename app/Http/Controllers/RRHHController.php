@@ -134,11 +134,10 @@ class RRHHController extends Controller
         }
         $rrhh->save();
 
-
-
-
-
-
+        if($rrhh->type == 'D')
+            return redirect('administrativeRRHH');
+        else
+            return redirect('academicRRHH');
     }
 
     /**

@@ -17,14 +17,16 @@ class CreatePersonsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('lastName');
-            $table->string('middleName');
-            $table->date('birthDate');
+            $table->string('middleName')->nullable();
+            $table->date('birthDate')->nullable();
             $table->string('personalId');
-            $table->string('phone');
-            $table->string('cellphone');
-            $table->string('email');
-            $table->char('gender'); // female, male, other [M-F-O]
-            $table->char('originType');// foreign or national {N[nacional]-E{extranjero}}
+            $table->string('phone')->nullable();
+            $table->string('cellphone')->nullable();
+            $table->string('email')->nullable();
+            $table->char('gender')->nullable(); // female, male, other [M-F-O]
+            $table->char('originType')->nullable();// foreign or national {N[nacional]-E{extranjero}}
+            $table->unique('personalId');
+            $table->unique('email');
             
         });
     }

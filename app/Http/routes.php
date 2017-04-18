@@ -58,21 +58,28 @@ Route::get('/api/versionModules','ApiController@versionModules');
 Route::get('/api/versionModules/{id}','ApiController@versionModulesById');
 Route::get('/api/courses','ApiController@courses');
 Route::get('/api/person/{id}','ApiController@personByCI');
+Route::get('/api/reqByProgram/{id}','ApiController@reqByProgram');
+Route::get('/api/coursesByModule/{id}','ApiController@coursesByModule');
+Route::get('/api/programByOffer/{id}','ApiController@programByOffer');
 
 Route::get('/params','ParamsAPController@index');
 Route::post('/paramsAcademicPlanning','AcademicOfferController@store');
-Route::post('/program','ProgramController@store');
+Route::post('/program-master','ProgramController@store');
+Route::get('/program/edit/{id}','ProgramController@show');
 
 Route::get('/regNewRRHH','RRHHController@create');
 Route::post('/regNewRRHH','RRHHController@store');
 
-Route::get('/program','VersionController@create');
+Route::get('academicRRHH','academicRRHHController@index');
+Route::get('administrativeRRHH','administrativeRRHHController@index');
+
+//Route::get('/program','VersionController@create');
 Route::post('/program','VersionController@store');
 Route::get('/programs','VersionController@index');
 
 Route::get('/modules','ModuleController@create');
-
 Route::post('/module','ModuleMaster@store');
+
 
 Route::get('/requirements','RequirementController@index');
 Route::post('requirements','RequirementController@store');
@@ -84,5 +91,14 @@ Route::get('courses','CourseController@index');
 Route::post('course','CourseController@store');
 
 Route::get('enrollment','EnrollmentController@create');
+Route::post('enrollment','EnrollmentController@store');
+
+Route::get ('/program/create','VersionController@create');
+Route::get('/program/{id}','VersionController@show');
+Route::get('/module/{id}','ModuleController@show');
+Route::get('/course/{id}','CourseController@show');
+
+Route::get('students','StudentController@index');
+
 
 
